@@ -1,7 +1,6 @@
 <?php
 
-use Dulces;
-
+include_once("Dulces.php");
     class Bollo extends Dulces{
 
 
@@ -15,6 +14,7 @@ use Dulces;
             parent::__construct($nombre,$numero,$precio);
         }
         public function muestraResumen(){
+            parent::muestraResumen();
             echo "<br>El relleno es de: " . $this->relleno;
         }
     }    

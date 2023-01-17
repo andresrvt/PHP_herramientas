@@ -1,8 +1,10 @@
 <?php
-    class Dulces {
+
+include_once("Resumible.php");
+    class Dulces implements Resumible{
 
         public function __construct(
-            private string $nombre,
+            public string $nombre,
             protected int $numero,
             private float $precio
         ) {
@@ -32,7 +34,7 @@
                 return $this;
             }
             public function muestraResumen(){
-                echo "<br>El nombre es: " . $this->nombre . ", el número es: " . $this->getNumero() . ", el precio sin IVA es: " . $this->getPrecioConIva() . " y el precio con IVA incluido es: " . $this->getPrecioConIva();
+                echo "<br>El nombre es: " . $this->nombre . ", el número es: " . $this->getNumero() . ", el precio sin IVA es: " . $this->precio . "€ y el precio con IVA incluido es: " . $this->getPrecioConIva() . "€.";
             }
     }
 ?>
