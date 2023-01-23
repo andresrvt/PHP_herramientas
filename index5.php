@@ -9,9 +9,8 @@
     $dulce2 = new Chocolate("Nestlé", 6, 2.95, 25, 100);
     $rellenos = ["chocolate", "nata"];
     $dulce3 = new Tarta("Tarta de la abuela", 24, 15, $rellenos, 3,10);
-    $dulcesComprados = [$dulce1,$dulce2,$dulce3];
 
-    $cliente1 = new Cliente("Cliente misterioso", 23,$dulcesComprados,1);
+    $cliente1 = new Cliente("Cliente misterioso", 23,1);
     $cliente1->comprar($dulce1);
     $cliente1->comprar($dulce2);
     $cliente1->comprar($dulce3);

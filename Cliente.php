@@ -1,10 +1,14 @@
 <?php
+include_once("util/DulceNoCompradoException.php");
+include_once("util/DulceNoEncontradoException.php");
+include_once("util/DulceNoCompradoException.php");
     class Cliente {
-        
+
+    private $dulcesComprados = array();
+
         function __construct(
             public string $nombre,
             private int $numero,
-            private $dulcesComprados = array(),
             private int $numDulcesComprados,
             private int $numPedidosEfectuados = 0
         ){
@@ -35,19 +39,34 @@
             }
         }
    
-
-        function comprar (Dulces $dulce){
-            echo "<br>";
-            if (($this->listaDeDulces($dulce))) {
-                $this->dulcesComprados[] = $dulce;
-                echo "Se ha comprado el dulce correctamente";
-                return $this;
-            }else{
-                echo "No se ha podido comprar el dulce";
-            }
+        public function getNumPedidosEfectuados()
+        {
+            return $this->numPedidosEfectuados;
         }
-        public function valorar(Dulces $dulce, String $mensaje){
-            echo "<br>Se ha valorado el dulce: " . $dulce->nombre . ", con el siguiente mensaje: " . $mensaje;
+    
+        public function setNumPedidosEfectuados($numPedidosEfectuados)
+        {
+                    $this->numPedidosEfectuados = $numPedidosEfectuados;
+
+                    return $this;
+        }
+
+        public function comprar(Dulces $dulce)
+        {
+            $this->setNumPedidosEfectuados($this->getNumPedidosEfectuados() + 1);
+            $this->dulcesComprados[] = $dulce;
+            echo "<br>Dulce comprado con éxito";
+            return $this;
+        }
+        public function valorar(Dulces $dulce, String $c)
+        {
+            if ($this->listaDeDulces($dulce)) {
+    
+                echo $c;
+            } else {
+                throw new DulceNoCompradoException();
+            }
+            return $this;
         }
 
         function listarPedidos(){
@@ -57,14 +76,6 @@
                 echo "<br>";
             }
         }
-
-    /**
-     * Get the value of numPedidosEfectuados
-     */ 
-    public function getNumPedidosEfectuados()
-    {
-        return $this->numPedidosEfectuados;
-    }
     }
 
 ?>

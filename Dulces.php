@@ -1,7 +1,7 @@
 <?php
 
 include_once("Resumible.php");
-    class Dulces implements Resumible{
+    abstract class Dulces implements Resumible{
 
         public function __construct(
             public string $nombre,
