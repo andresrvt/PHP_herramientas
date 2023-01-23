@@ -1,6 +1,8 @@
 <?php
 
-include_once("Dulces.php");
+namespace app;
+include_once("autoload.php");
+
     class Bollo extends Dulces{
 
 

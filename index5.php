@@ -1,9 +1,10 @@
 <?php
 
-    include_once("Cliente.php");
-    include_once("Bollo.php");
-    include_once("Chocolate.php");
-    include_once("Tarta.php");
+    include "autoload.php";
+    use app\Bollo;
+    use app\Chocolate;
+    use app\Tarta;
+    use app\Cliente;
   
     $dulce1 = new Bollo("Bomba de chocolate", 23, 3.5, "chocolate");
     $dulce2 = new Chocolate("Nestlé", 6, 2.95, 25, 100);

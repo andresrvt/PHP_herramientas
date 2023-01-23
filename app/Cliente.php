@@ -1,7 +1,8 @@
 <?php
-include_once("util/DulceNoCompradoException.php");
-include_once("util/DulceNoEncontradoException.php");
-include_once("util/DulceNoCompradoException.php");
+namespace app;
+
+include_once("autoload.php");
+use util\DulceNoCompradoException;
     class Cliente {
 
     private $dulcesComprados = array();
