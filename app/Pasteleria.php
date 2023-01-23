@@ -1,8 +1,8 @@
 <?php
 namespace app;
 
-use PHP_herramientas\util\DulceNoEncontradoException;
-use PHP_herramientas\util\ClienteNoEncontradoException;
+use util\DulceNoEncontradoException;
+use util\ClienteNoEncontradoException;
 include_once("autoload.php");
 include_once("Bollo.php");
 include_once("Chocolate.php");

@@ -47,9 +47,9 @@ use util\DulceNoCompradoException;
     
         public function setNumPedidosEfectuados($numPedidosEfectuados)
         {
-                    $this->numPedidosEfectuados = $numPedidosEfectuados;
+            $this->numPedidosEfectuados = $numPedidosEfectuados;
 
-                    return $this;
+            return $this;
         }
 
         public function comprar(Dulces $dulce)
@@ -59,11 +59,11 @@ use util\DulceNoCompradoException;
             echo "<br>Dulce comprado con éxito";
             return $this;
         }
-        public function valorar(Dulces $dulce, String $c)
+        public function valorar(Dulces $dulce, String $mensaje)
         {
             if ($this->listaDeDulces($dulce)) {
     
-                echo $c;
+                echo $mensaje;
             } else {
                 throw new DulceNoCompradoException();
             }
