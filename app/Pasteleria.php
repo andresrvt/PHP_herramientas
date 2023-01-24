@@ -3,20 +3,25 @@ namespace app;
 
 use util\DulceNoEncontradoException;
 use util\ClienteNoEncontradoException;
+use util\LogFactory;
+use Monolog\Logger;
+use Monolog\Handler\StreamHandler;
+
 include_once("autoload.php");
 include_once("Bollo.php");
 include_once("Chocolate.php");
 include_once("Tarta.php");
 
     class Pasteleria{
+        private $log;
         private $clientes = array();
         private $productos = array();
-        private int $numProductos = $this->getNumProductos();
-
+        private int $numClientes;
+        
         public function __construct(
             private string $nombre,
-            private int $numClientes,
         ) {
+        $this->log = LogFactory::getLogger();
         }
         private function incluirProducto(Dulces $dulce){
             $this->productos[] = $dulce;
@@ -58,6 +63,10 @@ include_once("Tarta.php");
         {
             return count($this->productos);
         }
+        public function getNumCliente()
+        {
+            return count($this->clientes);
+        }
         public function comprarClienteProducto(int $numeroCliente, int $numeroDulce)
         {
             $saveCliente = "";
@@ -75,11 +84,13 @@ include_once("Tarta.php");
                                 }
                             }
                             if($dulce == null){
+                                $this->log->warning("El dulce no se ha encontrado",[$numeroDulce]);
                                 throw new DulceNoEncontradoException();
                             }
                     }
                 }
                 if ($saveCliente == "") {
+                    $this->log->alert("El cliente no se ha encontrado",[$this->getNumCliente()]);
                     throw new ClienteNoEncontradoException();
                 }
             } catch (ClienteNoEncontradoException $e) {

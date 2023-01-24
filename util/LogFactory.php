@@ -1,15 +1,17 @@
 <?php
-namespace util;
 
-use Monolog\Logger;
-use Monolog\Handler\StreamHandler;
+    namespace util;
+    use Monolog\Logger;
+    use Monolog\Handler\StreamHandler;
 
-class LogFactory{
-    public static function getLogger(string $canal = "miApp"):Logger{
-        $log = new Logger($canal);
-        $log->pushHandler(new StreamHandler("logs/miApp.log",Logger::DEBUG));
+    include_once("./vendor/autoload.php");
 
-        return $log;
+    class LogFactory{
+        public static function getLogger(string $canal = "miApp"):Logger{
+            $log = new Logger($canal);
+            $log->pushHandler(new StreamHandler("logs/miApp.log",Logger::DEBUG));
+
+            return $log;
+        }
     }
-}
 ?>

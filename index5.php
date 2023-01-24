@@ -3,6 +3,7 @@
     include "autoload.php";
     use app\Bollo;
     use app\Chocolate;
+    use app\Pasteleria;
     use app\Tarta;
     use app\Cliente;
   
@@ -11,8 +12,12 @@
     $rellenos = ["chocolate", "nata"];
     $dulce3 = new Tarta("Tarta de la abuela", 24, 15, $rellenos, 3,10);
 
+    $pasteleria = new Pasteleria("Pitumba",3);
+
     $cliente1 = new Cliente("Cliente misterioso", 23,1);
     $cliente1->comprar($dulce1);
+    $pasteleria->comprarClienteProducto(4,8);
+    $cliente2->comprar($dulce1);
     $cliente1->comprar($dulce2);
     $cliente1->comprar($dulce3);
 
