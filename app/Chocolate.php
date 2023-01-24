@@ -19,5 +19,13 @@ include_once("Dulces.php");
             parent::muestraResumen();
             echo "<br>Este chocolate tiene un porcentaje de cacacao " . $this->porcentajeCacao . "% y tiene un peso de: " . $this->peso . "gr";
         } 
+
+        /**
+         * Get the value of porcentajeCacao
+         */ 
+        public function getPorcentajeCacao()
+        {
+                    return $this->porcentajeCacao;
+        }
     }    
 ?>

@@ -19,5 +19,13 @@ include_once("autoload.php");
             parent::muestraResumen();
             echo "<br>El relleno es de: " . $this->relleno;
         }
+
+            /**
+             * Get the value of relleno
+             */ 
+            public function getRelleno()
+            {
+                        return $this->relleno;
+            }
     }    
 ?>

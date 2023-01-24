@@ -16,8 +16,7 @@
 
     $cliente1 = new Cliente("Cliente misterioso", 23,1);
     $cliente1->comprar($dulce1);
-    $pasteleria->comprarClienteProducto(4,8);
-    $cliente2->comprar($dulce1);
+    $pasteleria->comprarClienteProducto("pitumba",8);
     $cliente1->comprar($dulce2);
     $cliente1->comprar($dulce3);
 

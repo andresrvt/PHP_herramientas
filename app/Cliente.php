@@ -3,9 +3,11 @@ namespace app;
 
 include_once("autoload.php");
 use util\DulceNoCompradoException;
+use util\LogFactory;
     class Cliente {
 
     private $dulcesComprados = array();
+    private $log;
 
         function __construct(
             public string $nombre,
@@ -13,7 +15,7 @@ use util\DulceNoCompradoException;
             private int $numDulcesComprados,
             private int $numPedidosEfectuados = 0
         ){
-
+            $this->log = LogFactory::getLogger();
         }
         public function getNumero()
         {
@@ -63,8 +65,9 @@ use util\DulceNoCompradoException;
         {
             if ($this->listaDeDulces($dulce)) {
     
-                echo $mensaje;
+                echo "<br>El dulce " . $dulce->nombre . " tiene la valoración: $mensaje";
             } else {
+                $this->log->critical("El dulce no se ha comprado",[]);
                 throw new DulceNoCompradoException();
             }
             return $this;

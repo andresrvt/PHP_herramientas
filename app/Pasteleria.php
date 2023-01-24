@@ -4,8 +4,6 @@ namespace app;
 use util\DulceNoEncontradoException;
 use util\ClienteNoEncontradoException;
 use util\LogFactory;
-use Monolog\Logger;
-use Monolog\Handler\StreamHandler;
 
 include_once("autoload.php");
 include_once("Bollo.php");
@@ -16,7 +14,6 @@ include_once("Tarta.php");
         private $log;
         private $clientes = array();
         private $productos = array();
-        private int $numClientes;
         
         public function __construct(
             private string $nombre,
@@ -100,5 +97,13 @@ include_once("Tarta.php");
             }
             return $this;
         }
+
+            /**
+             * Get the value of nombre
+             */ 
+            public function getNombre()
+            {
+                        return $this->nombre;
+            }
     }
 ?>
