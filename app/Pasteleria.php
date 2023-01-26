@@ -64,24 +64,24 @@ include_once("Tarta.php");
         {
             return count($this->clientes);
         }
-        public function comprarClienteProducto(int $numeroCliente, int $numeroDulce)
+        public function comprarClienteProducto($numCliente,$numDulce)
         {
             $saveCliente = "";
             $dulce = "";
             try {
                 foreach ($this->clientes as $key => $obj) {
-                    if ($obj->getNumero() == $numeroCliente) {
+                    if ($obj->getNumero() == $numCliente) {
                         $saveCliente = $obj;
                             foreach ($this->productos as $value => $prod) {
                         
-                                if ($prod->getNumero() == $numeroDulce) {
+                                if ($prod->getNumero() == $numDulce) {
                                     $dulce = $prod;
                                     $saveCliente->comprar($dulce);
                                     return $this;
                                 }
                             }
                             if($dulce == null){
-                                $this->log->warning("El dulce no se ha encontrado",[$numeroDulce]);
+                                $this->log->warning("El dulce no se ha encontrado",[$numDulce]);
                                 throw new DulceNoEncontradoException();
                             }
                     }
